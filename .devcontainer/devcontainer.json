@@ -1,20 +1,12 @@
 {
-    "name": "Laravel Codespace",
-    "dockerFile": "Dockerfile",
-    "forwardPorts": [8000,5173],
+    "name": "Laravel Sail (Dev Container)",
+    "dockerComposeFile": ["docker-compose.yml"],
+    "service": "laravel.test",
+    "workspaceFolder": "/var/www/html",
+    "forwardPorts": [80, 5173],
     "portsAttributes": {
-        "8000": { "label": "Laravel" },
+        "80":   { "label": "Laravel" },
         "5173": { "label": "Vite", "onAutoForward": "silent" }
     },
-    "postCreateCommand": "composer install && cp -n .env.example .env  && php artisan key:generate && npm ci && npm run build",
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "bmewburn.vscode-intelephense-client",
-                "ryannaddy.laravel-artisan",
-                "onecentlin.laravel-blade",
-                "esbenp.prettier-vscode"
-            ]
-        }
-    }
+    "postCreateCommand": "cp -n .env.example .env && php artisan key:generate && npm ci && npm run build"
 }
