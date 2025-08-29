@@ -10,6 +10,10 @@ class EquipService {
         return $this->repo->getAll();
     }
 
+    public function trobar($id){
+        return $this->repo->find($id);
+    }
+
     public function guardar(array $data) {
         return $this->repo->create($data);
     }
