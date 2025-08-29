@@ -23,7 +23,7 @@ class UpdateEquipRequest extends FormRequest
     {
         return [
             'nom'    => 'required|min:3',
-            'estadi' => 'required',
+            'estadi_id' => 'required|integer|exists:estadis,id',
             'titols' => 'required|integer|min:0'
         ];
     }

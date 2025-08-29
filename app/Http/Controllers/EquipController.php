@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEquipRequest;
 use App\Http\Requests\UpdateEquipRequest;
 use App\Models\Equip;
+use App\Models\Estadi;
 use App\Services\EquipService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -18,7 +19,8 @@ class EquipController extends Controller {
 
     // GET /equips/create
     public function create() {
-        return view('equips.create');
+        $estadis = Estadi::all();
+        return view('equips.create',compact('estadis'));
     }
     // POST /equips
     public function store(StoreEquipRequest $request) {
