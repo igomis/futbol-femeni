@@ -24,7 +24,7 @@ class EstadiController extends Controller
     {
         $estadi = new Estadi($request->all());
         $estadi->save();
-        return redirect()->route('equips.index')->with('success', 'Equip afegit correctament!');
+        return redirect()->route('estadis.index')->with('success', 'Equip afegit correctament!');
     }
 
     public function edit(Estadi $estadi){
@@ -33,11 +33,11 @@ class EstadiController extends Controller
 
     public function update(Request $request, Estadi $estadi){
         $estadi->update($request->all());
-        return redirect()->route('equips.index')->with('success', 'Equip afegit correctament!');
+        return redirect()->route('estadis.index')->with('success', 'Equip afegit correctament!');
     }
 
     public function destroy(Estadi $estadi){
         $estadi->delete();
-        return redirect()->route('equips.index')->with('success', 'Equip afegit correctament!');
+        return redirect()->route('estadis.index')->with('success', 'Equip afegit correctament!');
     }
 }
