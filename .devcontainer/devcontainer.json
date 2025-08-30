@@ -4,7 +4,7 @@
     "service": "laravel",
     "workspaceFolder": "/var/www/html",
     "overrideCommand": true,
-    "postCreateCommand": "cp -n .env.example .env && composer install && php artisan key:generate && npm install && npm run build",
+    "postCreateCommand": "cp -n .env.example .env && composer install && php artisan key:generate && npm install && npm run build && sed -i \"s|^APP_URL=.*|APP_URL=https://$CODESPACE_NAME-80.app.github.dev|\" .env && sed -i \"s|^VITE_APP_URL=.*|VITE_APP_URL=https://$CODESPACE_NAME-5173.app.github.dev|\" .env",
     "forwardPorts": [80, 5173, 3306, 8025],
     "portsAttributes": {
         "80":   { "label": "Laravel" },
