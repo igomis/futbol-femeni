@@ -1,8 +1,6 @@
 services:
   laravel.test:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: laravelsail/php84-composer:latest
     ports:
       - "80:80"
       - "5173:5173"
