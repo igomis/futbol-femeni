@@ -7,10 +7,11 @@
     "workspaceFolder": "/var/www/html",
     "overrideCommand": false,
     "postCreateCommand": "cp -n .env.example .env && composer install && php artisan key:generate && npm ci && npm run build",
-    "remoteUser": "sail",
+    "remoteUser": "vscode",   // 👈 canvi clau
     "forwardPorts": [80, 5173],
     "portsAttributes": {
         "80":   { "label": "Laravel" },
         "5173": { "label": "Vite", "onAutoForward": "silent" }
     }
 }
+
