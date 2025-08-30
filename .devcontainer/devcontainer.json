@@ -3,17 +3,18 @@
     "dockerComposeFile": [
         "docker-compose.override.yml"
     ],
-    "service": "laravel.test",          // 👈 força a usar el servei correcte
-    "workspaceFolder": "/var/www/html", // 👈 on viu Laravel dins Sail
+    "service": "laravel.test",
+    "workspaceFolder": "/var/www/html",
     "overrideCommand": false,
 
-    // Configuració d’usuari
-    "remoteUser": "sail",               // 👈 ara sí, l’usuari Sail que ja existeix en la imatge
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
 
-    // Post create: prepara el projecte
+    "remoteUser": "sail",
+
     "postCreateCommand": "cp -n .env.example .env && composer install && php artisan key:generate && npm install && npm run build",
 
-    // Ports exposats
     "forwardPorts": [80, 5173, 3306, 8025],
     "portsAttributes": {
         "80":   { "label": "Laravel" },
@@ -22,6 +23,5 @@
         "8025": { "label": "Mailpit" }
     }
 }
-
 
 
