@@ -3,7 +3,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: php -S 0.0.0.0:80 -t public
     ports:
       - "80:80"
       - "5173:5173"
