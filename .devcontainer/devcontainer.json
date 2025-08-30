@@ -1,12 +1,16 @@
 {
-    "name": "Laravel Sail (Dev Container)",
-    "dockerComposeFile": ["../docker-compose.yml"],
+    "name": "Laravel Sail (Codespaces)",
+    "dockerComposeFile": [
+        "../docker-compose.override.yml"
+    ],
     "service": "laravel.test",
     "workspaceFolder": "/var/www/html",
+    "overrideCommand": false,
+    "postCreateCommand": "cp -n .env.example .env && composer install && php artisan key:generate && npm ci && npm run build",
+    "remoteUser": "sail",
     "forwardPorts": [80, 5173],
     "portsAttributes": {
         "80":   { "label": "Laravel" },
         "5173": { "label": "Vite", "onAutoForward": "silent" }
-    },
-    "postCreateCommand": "cp -n .env.example .env && php artisan key:generate && npm ci && npm run build"
+    }
 }
