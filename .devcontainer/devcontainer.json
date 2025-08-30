@@ -10,11 +10,7 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
-
-    "remoteUser": "sail",
-
     "postCreateCommand": "cp -n .env.example .env && composer install && php artisan key:generate && npm install && npm run build",
-
     "forwardPorts": [80, 5173, 3306, 8025],
     "portsAttributes": {
         "80":   { "label": "Laravel" },
