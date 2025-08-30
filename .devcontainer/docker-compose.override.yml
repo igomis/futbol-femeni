@@ -5,7 +5,7 @@ services:
       - "80:80"
       - "5173:5173"
     volumes:
-      - .:/var/www/html
+      - ..:/var/www/html
     networks:
       - sail
     depends_on:
