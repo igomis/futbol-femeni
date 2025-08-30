@@ -1,11 +1,8 @@
-FROM mcr.microsoft.com/devcontainers/php:8.2
+FROM laravelsail/php84-composer:latest
 
-# Node 20 per a Vite 7 / laravel-vite-plugin 2.x
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
- && apt-get update && apt-get install -y nodejs \
- && npm -v && node -v
+# Crear usuari 'vscode' per compatibilitat amb Codespaces
+RUN useradd -ms /bin/bash vscode \
+    && echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# Composer acostuma a vindre, però per si de cas:
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
- && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
- && rm composer-setup.php
+USER vscode
+WORKDIR /var/www/html

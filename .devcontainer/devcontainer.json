@@ -1,20 +1,23 @@
 {
-    "name": "Laravel Sail Codespaces",
+    "name": "Laravel Sail (Codespaces)",
     "dockerComposeFile": [
         "docker-compose.override.yml"
     ],
     "service": "laravel.test",
     "workspaceFolder": "/var/www/html",
     "overrideCommand": false,
-    "postCreateCommand": "apt-get update && apt-get install -y php-cli unzip git curl && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && cp -n .env.example .env && composer install && php artisan key:generate && npm install && npm run build",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "remoteUser": "vscode", // 👈 l’usuari que crearem al Dockerfile
+    "postCreateCommand": "cp -n .env.example .env && composer install && php artisan key:generate && npm install && npm run build",
     "forwardPorts": [80, 5173, 3306, 8025],
     "portsAttributes": {
         "80": { "label": "Laravel" },
         "5173": { "label": "Vite" },
         "3306": { "label": "MySQL" },
         "8025": { "label": "Mailpit" }
-    },
-    "remoteUser": "sail"
+    }
 }
 
 
