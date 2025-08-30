@@ -1,6 +1,14 @@
 services:
   laravel.test:
     image: laravelsail/php84-composer:latest
+    command: >
+      sh -c "
+      if ! id -u sail > /dev/null 2>&1; then
+        adduser -u 1337 -D -s /bin/sh sail &&
+        echo 'sail ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+      fi &&
+      php-fpm"
+    working_dir: /var/www/html
     ports:
       - "80:80"
       - "5173:5173"
