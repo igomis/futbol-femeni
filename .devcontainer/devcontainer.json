@@ -1,6 +1,6 @@
 {
     "name": "Laravel Sail (Dev Container)",
-    "dockerComposeFile": ["docker-compose.yml"],
+    "dockerComposeFile": ["../docker-compose.yml"],
     "service": "laravel.test",
     "workspaceFolder": "/var/www/html",
     "forwardPorts": [80, 5173],
